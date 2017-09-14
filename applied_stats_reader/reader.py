@@ -4,7 +4,8 @@
 
 import sys
 
-# Usage: python reader.py inputfile
+# Usage: python reader.py inputfile command
+# python reader.py inputfile X x_value
 
 x_vals = []
 y_vals = []
@@ -68,10 +69,6 @@ def expected_y(ex):
 
 def main():
 	readFile(sys.argv[1])
-	if(sys.argv[2] == "beta-one"):
-		print calc_beta_one()
-	if(sys.argv[2] == "beta-zero"):
-		print calc_beta_zero()
 	if(sys.argv[2] == "print-table"):
 		print_all()
 	if(sys.argv[2] == "print-results"):
@@ -80,7 +77,7 @@ def main():
 		print "Mean X values: ", mean_x(), "\nMean Y values: ", mean_y()
 		print "Max X value: ", max(x_vals), "\nMin X value:", min(x_vals), "\nMax Y value: ", max(y_vals), "\nMin Y value: ", min(y_vals)
 		print "Beta[1]: ", calc_beta_one(), "\nBeta[0]: ", calc_beta_zero()
-		print "Equation: Y =", calc_beta_zero(), "+", calc_beta_one(), "* X"
+		print "Regression Equation: Y =", calc_beta_zero(), "+", calc_beta_one(), "* X"
 	if(len(sys.argv) > 2):
 		if(sys.argv[2].lower() == "x"):
 			print expected_y(sys.argv[3])
