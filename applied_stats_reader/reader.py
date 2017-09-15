@@ -67,13 +67,13 @@ def calc_sec():
 
 def calc_sse():
 	if(len(x_vals) > 0):
-		sec = sum_sq_y() - ((sum_y() * sum_y()) / len(x_vals))
-		return sec - (calc_beta_one() * calc_beta_one()) * (calc_sec())
+		first = sum_sq_y() - ((sum_y() * sum_y()) / len(x_vals))
+		return first - (calc_beta_one() * calc_beta_one()) * (calc_sec())
 	return -1		
 
 def print_all():
 	counter = 0
-	print "Row   X    Y"
+	print "Row   X     Y"
 	for ex in x_vals:
 		print counter + 1, " ", ex, "  ", y_vals[counter]
 		counter += 1
@@ -85,27 +85,23 @@ def print_help():
 		print c,
 
 def main():
-	
 	if(len(sys.argv) == 2):
 		if(sys.argv[1] == "help"):
 			print_help()
 	if(len(sys.argv) > 2):
 		readFile(sys.argv[1])
-
 		if(sys.argv[2] == "print-table"):
 			print_all()
 		if(sys.argv[2] == "print-results"):
-			print "N: ", len(x_vals), "\nSum of X values: ", sum_x(), "\nSum of Y values: ", sum_y()
-			print "Sum of X times Y values: ", sum_x_times_y(), "\nSum of X^2 values:", sum_sq_x(), "\nSum of Y^2 values: ", sum_sq_y()
-			print "Mean X values: ", mean_x(), "\nMean Y values: ", mean_y()
-			print "Max X value: ", max(x_vals), "\nMin X value:", min(x_vals), "\nMax Y value: ", max(y_vals), "\nMin Y value: ", min(y_vals)
-			print "Beta[1]: ", calc_beta_one(), "\nBeta[0]: ", calc_beta_zero()
-			print "Regression Equation: Y =", calc_beta_zero(), "+", calc_beta_one(), "* X"
-			print "SSE: ", calc_sse()
-			print calc_sec()
-		if(len(sys.argv) > 2):
-			if(sys.argv[2].lower() == "x"):
-				print expected_y(sys.argv[3])
+			print "N: ", len(x_vals), "\nSum of X values: ", sum_x(), "\nSum of Y values: ", sum_y(), "\n--------"
+			print "Sum of X times Y values: ", sum_x_times_y(), "\nSum of X^2 values:", sum_sq_x(), "\nSum of Y^2 values: ", sum_sq_y(), "\n--------"
+			print "Mean X values: ", mean_x(), "\nMean Y values: ", mean_y(), "\n--------"
+			print "Max X value: ", max(x_vals), "\nMin X value:", min(x_vals), "\nMax Y value: ", max(y_vals), "\nMin Y value: ", min(y_vals), "\n--------"
+			print "Beta[1]: ", calc_beta_one(), "\nBeta[0]: ", calc_beta_zero(), "\n--------"
+			print "Regression Equation: Y =", calc_beta_zero(), "+", calc_beta_one(), "* X", "\n--------"
+			print "SSE: ", calc_sse(), "\n--------"
+		if(sys.argv[2].lower() == "x"):
+			print "Expected value of Y when X =", sys.argv[3], ":", expected_y(sys.argv[3])
 
 if __name__  == "__main__":
 	main()
