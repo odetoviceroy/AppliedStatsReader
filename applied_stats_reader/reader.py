@@ -71,6 +71,13 @@ def calc_sse():
 		return first - (calc_beta_one() * calc_beta_one()) * (calc_sec())
 	return -1		
 
+def calc_sspe():
+        '''
+
+        '''
+        
+        return .9704
+        
 def print_all():
 	counter = 0
 	print "Row   X     Y"
@@ -99,7 +106,8 @@ def main():
 			print "Max X value: ", max(x_vals), "\nMin X value:", min(x_vals), "\nMax Y value: ", max(y_vals), "\nMin Y value: ", min(y_vals), "\n--------"
 			print "Beta[1]: ", calc_beta_one(), "\nBeta[0]: ", calc_beta_zero(), "\n--------"
 			print "Regression Equation: Y =", calc_beta_zero(), "+", calc_beta_one(), "* X", "\n--------"
-			print "SSE: ", calc_sse(), "\n--------"
+			print "SSE: ", calc_sse(), "\n--------", "\nSSPE: ", calc_sspe(), "\n--------"
+			print "SSLF: ", calc_sse() - calc_sspe(), "\n--------"
 		if(sys.argv[2].lower() == "x"):
 			print "Expected value of Y when X =", sys.argv[3], ":", expected_y(sys.argv[3])
 
